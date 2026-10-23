@@ -1,0 +1,112 @@
+{
+  "whole_cohort": {
+    "raw_count": 16,
+    "accepted_count": 16,
+    "orders": [
+      {
+        "order": [
+          0,
+          1
+        ],
+        "cost": "95/2",
+        "startup_cost": "85/2",
+        "variable_cost": "5"
+      },
+      {
+        "order": [
+          1,
+          0
+        ],
+        "cost": "55",
+        "startup_cost": "50",
+        "variable_cost": "5"
+      }
+    ],
+    "chosen_order": [
+      0,
+      1
+    ]
+  },
+  "product_slots": {
+    "raw_count": 16,
+    "accepted_count": 16,
+    "orders": [
+      {
+        "order": [
+          0,
+          1
+        ],
+        "cost": "6635/128",
+        "startup_cost": "5995/128",
+        "variable_cost": "5"
+      },
+      {
+        "order": [
+          1,
+          0
+        ],
+        "cost": "1355/32",
+        "startup_cost": "1195/32",
+        "variable_cost": "5"
+      }
+    ],
+    "chosen_order": [
+      1,
+      0
+    ]
+  },
+  "exact_answers": [
+    {
+      "entity": 0,
+      "score": "4/5",
+      "representatives": [
+        0,
+        1
+      ]
+    }
+  ],
+  "actions": [
+    {
+      "kind": "scan",
+      "role": 0
+    },
+    {
+      "kind": "complete",
+      "role": 1,
+      "entities": [
+        0
+      ]
+    },
+    {
+      "kind": "scan",
+      "role": 1
+    },
+    {
+      "kind": "scan",
+      "role": 1
+    },
+    {
+      "kind": "scan",
+      "role": 0
+    },
+    {
+      "kind": "complete",
+      "role": 1,
+      "entities": [
+        1
+      ]
+    },
+    {
+      "kind": "scan",
+      "role": 1
+    },
+    {
+      "kind": "scan",
+      "role": 1
+    }
+  ],
+  "discarded": [
+    2
+  ],
+  "matches_exhaustive": true
+}

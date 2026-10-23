@@ -1,0 +1,444 @@
+{
+  "seed": 20261011,
+  "learning": [
+    {
+      "h": 1,
+      "joint_wrong": 1244,
+      "product_wrong": 1244,
+      "repeats": 5000,
+      "joint_exact_error": 0.25,
+      "joint_expected_regret": 1.875,
+      "product_mean_regret": 1.8659999999999999
+    },
+    {
+      "h": 2,
+      "joint_wrong": 329,
+      "product_wrong": 2287,
+      "repeats": 5000,
+      "joint_exact_error": 0.0625,
+      "joint_expected_regret": 0.46875,
+      "product_mean_regret": 3.4305
+    },
+    {
+      "h": 4,
+      "joint_wrong": 28,
+      "product_wrong": 4461,
+      "repeats": 5000,
+      "joint_exact_error": 0.00390625,
+      "joint_expected_regret": 0.029296875,
+      "product_mean_regret": 6.6915
+    },
+    {
+      "h": 8,
+      "joint_wrong": 2,
+      "product_wrong": 4900,
+      "repeats": 5000,
+      "joint_exact_error": 0.0003814697265625,
+      "joint_expected_regret": 0.00286102294921875,
+      "product_mean_regret": 7.35
+    },
+    {
+      "h": 16,
+      "joint_wrong": 0,
+      "product_wrong": 4998,
+      "repeats": 5000,
+      "joint_exact_error": 3.7832651287317276e-06,
+      "joint_expected_regret": 2.8374488465487957e-05,
+      "product_mean_regret": 7.497
+    },
+    {
+      "h": 32,
+      "joint_wrong": 0,
+      "product_wrong": 5000,
+      "repeats": 5000,
+      "joint_exact_error": 3.8630100474782575e-11,
+      "joint_expected_regret": 2.897257535608693e-10,
+      "product_mean_regret": 7.5
+    }
+  ],
+  "adaptive_startup_sweep": [
+    {
+      "lambda_": 0.0,
+      "worlds": {
+        "independent": {
+          "cost": 5.0,
+          "exact": "5",
+          "first_actions": [
+            [
+              0,
+              [
+                0
+              ]
+            ],
+            [
+              0,
+              [
+                1
+              ]
+            ],
+            [
+              0,
+              [
+                0,
+                1
+              ]
+            ],
+            [
+              0,
+              [
+                2
+              ]
+            ],
+            [
+              0,
+              [
+                0,
+                2
+              ]
+            ],
+            [
+              0,
+              [
+                1,
+                2
+              ]
+            ],
+            [
+              0,
+              [
+                0,
+                1,
+                2
+              ]
+            ],
+            [
+              0,
+              [
+                3
+              ]
+            ],
+            [
+              0,
+              [
+                0,
+                3
+              ]
+            ],
+            [
+              0,
+              [
+                1,
+                3
+              ]
+            ],
+            [
+              0,
+              [
+                0,
+                1,
+                3
+              ]
+            ],
+            [
+              0,
+              [
+                2,
+                3
+              ]
+            ],
+            [
+              0,
+              [
+                0,
+                2,
+                3
+              ]
+            ],
+            [
+              0,
+              [
+                1,
+                2,
+                3
+              ]
+            ],
+            [
+              0,
+              [
+                0,
+                1,
+                2,
+                3
+              ]
+            ],
+            [
+              1,
+              [
+                0
+              ]
+            ],
+            [
+              1,
+              [
+                1
+              ]
+            ],
+            [
+              1,
+              [
+                0,
+                1
+              ]
+            ],
+            [
+              1,
+              [
+                2
+              ]
+            ],
+            [
+              1,
+              [
+                0,
+                2
+              ]
+            ],
+            [
+              1,
+              [
+                1,
+                2
+              ]
+            ],
+            [
+              1,
+              [
+                0,
+                1,
+                2
+              ]
+            ],
+            [
+              1,
+              [
+                3
+              ]
+            ],
+            [
+              1,
+              [
+                0,
+                3
+              ]
+            ],
+            [
+              1,
+              [
+                1,
+                3
+              ]
+            ],
+            [
+              1,
+              [
+                0,
+                1,
+                3
+              ]
+            ],
+            [
+              1,
+              [
+                2,
+                3
+              ]
+            ],
+            [
+              1,
+              [
+                0,
+                2,
+                3
+              ]
+            ],
+            [
+              1,
+              [
+                1,
+                2,
+                3
+              ]
+            ],
+            [
+              1,
+              [
+                0,
+                1,
+                2,
+                3
+              ]
+            ]
+          ],
+          "states": 6560
+        },
+        "clustered": {
+          "cost": 4.4375,
+          "exact": "71/16",
+          "first_actions": [
+            [
+              0,
+              [
+                0
+              ]
+            ],
+            [
+              0,
+              [
+                1
+              ]
+            ],
+            [
+              0,
+              [
+                2
+              ]
+            ],
+            [
+              0,
+              [
+                3
+              ]
+            ]
+          ],
+          "states": 1457
+        }
+      }
+    },
+    {
+      "lambda_": 0.1,
+      "worlds": {
+        "independent": {
+          "cost": 8.734375,
+          "exact": "559/64",
+          "first_actions": [
+            [
+              1,
+              [
+                0,
+                1,
+                2,
+                3
+              ]
+            ]
+          ],
+          "states": 6560
+        },
+        "clustered": {
+          "cost": 9.25,
+          "exact": "37/4",
+          "first_actions": [
+            [
+              0,
+              [
+                0,
+                1,
+                2,
+                3
+              ]
+            ]
+          ],
+          "states": 1457
+        }
+      }
+    },
+    {
+      "lambda_": 1.0,
+      "worlds": {
+        "independent": {
+          "cost": 42.34375,
+          "exact": "1355/32",
+          "first_actions": [
+            [
+              1,
+              [
+                0,
+                1,
+                2,
+                3
+              ]
+            ]
+          ],
+          "states": 6560
+        },
+        "clustered": {
+          "cost": 47.5,
+          "exact": "95/2",
+          "first_actions": [
+            [
+              0,
+              [
+                0,
+                1,
+                2,
+                3
+              ]
+            ]
+          ],
+          "states": 1457
+        }
+      }
+    },
+    {
+      "lambda_": 10.0,
+      "worlds": {
+        "independent": {
+          "cost": 378.4375,
+          "exact": "6055/16",
+          "first_actions": [
+            [
+              1,
+              [
+                0,
+                1,
+                2,
+                3
+              ]
+            ]
+          ],
+          "states": 6560
+        },
+        "clustered": {
+          "cost": 430.0,
+          "exact": "430",
+          "first_actions": [
+            [
+              0,
+              [
+                0,
+                1,
+                2,
+                3
+              ]
+            ]
+          ],
+          "states": 1457
+        }
+      }
+    }
+  ],
+  "acceptance_laws": {
+    "independent": {
+      "alpha": "1/256",
+      "expected_raw_for_8": "2048"
+    },
+    "shared": {
+      "alpha": "1/4",
+      "expected_raw_for_8": "32"
+    },
+    "exclusive": {
+      "alpha": "0",
+      "expected_raw_for_8": null
+    }
+  },
+  "experiment": "synthetic decisions and exact finite cost; not elapsed service measurements"
+}

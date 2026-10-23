@@ -1,0 +1,14 @@
+{
+  "random_instances": 1000,
+  "max_steps": 299,
+  "safe_discard_instances": 146,
+  "directed_cases": 3,
+  "cost_identity_populations": 200,
+  "orders_per_population": 6,
+  "stagewise_costs": [
+    "6635/128",
+    "1355/32",
+    "95/2",
+    "55"
+  ]
+}

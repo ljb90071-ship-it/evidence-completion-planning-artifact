@@ -1,0 +1,18 @@
+{
+  "status": "PASS",
+  "finite_raw_matrices": 160000,
+  "finite_accepted_matrices": 625,
+  "row_survival": 0.2,
+  "conditional_nonempty": 0.5904,
+  "clipped_nonempty": 0.9984,
+  "acceptance": "1/256",
+  "expected_accepted_of_32": 0.125,
+  "correlated_conditioning_matrices": 6,
+  "exhaustive_shuffle_pairs": 36,
+  "original_nonempty": "2/3",
+  "mean_shuffled_nonempty": "8/9",
+  "slot_role_vector_marginals_preserved": true,
+  "accounting_cases": 4,
+  "frontier_refinement_checks": 2,
+  "application_benchmark_executed": false
+}

@@ -1,0 +1,4 @@
+law,acceptance,expected_raw_for_8
+independent,1/256,2048
+shared,1/4,32
+exclusive,0,Impossible

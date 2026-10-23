@@ -1,0 +1,66 @@
+{
+  "independent": {
+    "optimal_cost": "1355/32",
+    "decimal": 42.34375,
+    "optimal_first_actions": [
+      [
+        1,
+        [
+          0,
+          1,
+          2,
+          3
+        ]
+      ]
+    ],
+    "states": 4096
+  },
+  "independent_audit_allowed": {
+    "optimal_cost": "1355/32",
+    "decimal": 42.34375,
+    "optimal_first_actions": [
+      [
+        1,
+        [
+          0,
+          1,
+          2,
+          3
+        ]
+      ]
+    ],
+    "states": 6560
+  },
+  "clustered": {
+    "optimal_cost": "95/2",
+    "decimal": 47.5,
+    "optimal_first_actions": [
+      [
+        0,
+        [
+          0,
+          1,
+          2,
+          3
+        ]
+      ]
+    ],
+    "states": 1001
+  },
+  "clustered_audit_allowed": {
+    "optimal_cost": "95/2",
+    "decimal": 47.5,
+    "optimal_first_actions": [
+      [
+        0,
+        [
+          0,
+          1,
+          2,
+          3
+        ]
+      ]
+    ],
+    "states": 1457
+  }
+}

@@ -1,0 +1,72 @@
+[
+  {
+    "horizon": 1,
+    "price": 3,
+    "h": 1,
+    "net_gain": "21/8",
+    "decimal": 2.625
+  },
+  {
+    "horizon": 1,
+    "price": 58,
+    "h": 0,
+    "net_gain": "0",
+    "decimal": 0.0
+  },
+  {
+    "horizon": 4,
+    "price": 3,
+    "h": 2,
+    "net_gain": "177/8",
+    "decimal": 22.125
+  },
+  {
+    "horizon": 4,
+    "price": 58,
+    "h": 0,
+    "net_gain": "0",
+    "decimal": 0.0
+  },
+  {
+    "horizon": 16,
+    "price": 3,
+    "h": 4,
+    "net_gain": "3441/32",
+    "decimal": 107.53125
+  },
+  {
+    "horizon": 16,
+    "price": 58,
+    "h": 1,
+    "net_gain": "32",
+    "decimal": 32.0
+  },
+  {
+    "horizon": 64,
+    "price": 3,
+    "h": 4,
+    "net_gain": "3729/8",
+    "decimal": 466.125
+  },
+  {
+    "horizon": 64,
+    "price": 58,
+    "h": 2,
+    "net_gain": "334",
+    "decimal": 334.0
+  },
+  {
+    "horizon": 256,
+    "price": 3,
+    "h": 4,
+    "net_gain": "3801/2",
+    "decimal": 1900.5
+  },
+  {
+    "horizon": 256,
+    "price": 58,
+    "h": 2,
+    "net_gain": "1684",
+    "decimal": 1684.0
+  }
+]

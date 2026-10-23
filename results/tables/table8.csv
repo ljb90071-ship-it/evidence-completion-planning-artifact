@@ -1,0 +1,16 @@
+baseline,acquisition,baseline_regret,price,horizon,h,net_gain,decimal
+minimax,s_audits,243/58,3,1,0,0,0.0
+minimax,s_audits,243/58,3,4,2,2061/232,8.883620689655173
+minimax,s_audits,243/58,3,16,4,50637/928,54.56573275862069
+minimax,s_audits,243/58,3,64,4,58989/232,254.26293103448276
+minimax,s_audits,243/58,3,256,4,61077/58,1053.051724137931
+minimax,mixture_audits,243/58,183/29,1,0,0,0.0
+minimax,mixture_audits,243/58,183/29,4,1,171/58,2.9482758620689653
+minimax,mixture_audits,243/58,183/29,16,2,2721/58,46.91379310344828
+minimax,mixture_audits,243/58,183/29,64,4,55917/232,241.02155172413794
+minimax,mixture_audits,243/58,183/29,256,4,60309/58,1039.8103448275863
+minimax,fresh,243/58,58,1,0,0,0.0
+minimax,fresh,243/58,58,4,0,0,0.0
+minimax,fresh,243/58,58,16,0,0,0.0
+minimax,fresh,243/58,58,64,2,3542/29,122.13793103448276
+minimax,fresh,243/58,58,256,2,24260/29,836.551724137931

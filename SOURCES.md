@@ -1,0 +1,7 @@
+# Source and dependency notes
+
+The Python source in this repository is the accompanying reference implementation and numerical calculation code for *When Joint Information Changes Evidence-Completion Plans*. No third-party implementation is vendored. The vector figures embed DejaVu Sans glyphs; their [font license](licenses/LICENSE_DEJAVU.txt) is retained. The calculations use the Python standard library (`fractions`, `itertools`, `math`, `random`, `json`, `csv`, `pathlib`, `functools`, `argparse`). The two supplied vector PDFs are the paper's figures; regenerating them is not required for the numerical commands.
+
+Algorithmic context and attribution follow the paper: the nonempty-set cost mechanism and correlation-gap precedent are attributed to Agrawal et al.; the relationship to threshold algorithms, MPro, TopX, set-oriented predicate evaluation and sequential batch testing is discussed in the paper's related work. The code here evaluates the paper's specified finite populations and observation certificates, rather than importing implementations from those works.
+
+No external dataset, model weights, compiled library or downloadable benchmark is bundled. No third-party license notices have been removed. This distribution does not assign a new open-source license on behalf of the authors; a public redistribution license can be selected by the rights holder when hosting the repository. Local inspection and the documented numerical commands do not require downloading any dependencies.
