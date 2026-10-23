@@ -1,22 +1,30 @@
 # When Joint Information Changes Evidence-Completion Plans
 
-This repository accompanies the paper's finite decision and acquisition analysis. It provides exact rational search over adaptive same-role requests, a whole-cohort replay reference implementation, a separate exact-answer state machine, and the numerical data behind the figures and tables.
+This repository contains exact rational search for adaptive same-role requests,
+whole-cohort replay, an exact-answer state machine, and the paper's decision and
+acquisition analyses.
 
-The central example has four entities, two missing roles, startup prices 40 and 10, and unit variable work. Two populations share every per-entity two-role law but require opposite optimal first requests. Their adaptive expected costs are 1355/32 and 95/2 service-cost units. A 30-action minimax calculation gives regret 243/58. A reachable three-role state realizes the local model, and the unique first requests remain opposite throughout a ten-dimensional price box. The acquisition analysis compares both always-s and the minimax no-sample policy, including the policy-dependent audit price 183/29. The sampling experiments then ask when complete joint observations identify a useful order and when their acquisition cost is worthwhile.
+The central example has four entities and two missing roles, with startup prices
+40 and 10 and unit variable work. Two populations share every per-entity two-role
+law but require opposite first requests. Their adaptive expected costs are
+1355/32 and 95/2 service-cost units; the 30-action minimax regret is 243/58.
+The accompanying calculations examine reachability, price stability and when
+acquiring joint observations pays for itself.
 
-## Start by browsing
+## Navigate
 
-1. [Paper-to-material map](paper-map.md): every figure and table, with section and source locations.
-2. [Method and implementation guide](docs/method.md): state, actions, replay, conditioning and cost accounting.
-3. [Results and units](results/README.md): readable result summary, CSVs, exact fractions and field definitions.
-4. [Example inputs](examples/README.md): a complete cohort pool and a passage-level evidence instance.
-5. [Experiment configuration](configs/paper.json) and [configuration guide](configs/README.md).
+- [Paper-to-material map](paper-map.md): figures, tables and corresponding files.
+- [Method guide](docs/method.md): state, replay, conditioning and cost accounting.
+- [Results and units](results/README.md): summaries, CSVs, exact fractions and fields.
+- [Example inputs](examples/README.md): cohort pool and passage-level evidence.
+- [Experiment configuration](configs/paper.json) and [configuration guide](configs/README.md).
+- Figures: [survivor distributions](figures/survivors.pdf) and [execution information flow](figures/executor.pdf).
+- [Source and dependency notes](SOURCES.md).
 
-The [survivor distributions](figures/survivors.pdf) and [execution information flow](figures/executor.pdf) are the paper's vector figures. CSVs can be opened directly in a text editor or spreadsheet; JSON holds the longer action lists and exact fractions.
+## Run examples and checks
 
-## Run the small examples
-
-Use Python 3.10 or later, with no third-party packages. Commands below run from this repository's root. Python 3.14 was used for the supplied checks.
+Use Python 3.10 or later and its standard library. Run from the repository root.
+Python 3.14 was used for the supplied checks.
 
 ```sh
 python scripts/demo.py
@@ -24,13 +32,19 @@ python scripts/verify.py
 python scripts/export_tables.py
 ```
 
-`demo.py` reads the replay and evidence example JSON files. It computes whole-cohort and product-slot estimates, chooses the first role, and executes mixed scans/completions until the exact certificate holds. The clustered pool chooses `[0,1]` under joint replay and `[1,0]` under product-slot replay. The evidence instance returns entity 0 with score `4/5` and representative passage IDs 0 and 1. Its action trace is calculated from the input.
+`demo.py` reads replay and evidence JSON inputs, compares whole-cohort and
+product-slot estimates, and executes scans/completions until the exact certificate
+holds. The clustered pool chooses `[0,1]` under joint replay and `[1,0]` under
+product-slot replay. The evidence input returns entity 0 with score `4/5` and
+representative passage IDs 0 and 1.
 
-`verify.py` runs local mechanism and consistency checks: joint versus product replay, empty accepted pool, equality handling, empty continuation cost, incremental audit charges, 100 randomized exact-state instances, three directed tie/discard cases, 200 populations × 6 cost identities, and checks on archived adaptive/learning/acquisition results. It checks the stored 30-action minimax dual certificate and embedding/region contracts, and recomputes acquisition-baseline values; it does not rerun the adaptive search or embedding enumeration.
+`verify.py` checks replay, equality and discard handling, incremental audit charges,
+randomized answer states, cost identities, the stored minimax dual certificate,
+and embedding/price-region contracts. `export_tables.py` reads archived numerical
+outputs and writes nine CSVs under `results/tables`. Table 2 and Figure 1 follow
+directly from the specified exact laws.
 
-`export_tables.py` reads archived outputs and writes nine CSVs under `results/tables`. This is result analysis and table generation, not an experiment rerun. Table 2 and Figure 1 are derived directly from their stated exact laws. The archived outputs are not overwritten.
-
-## Recompute the finite experiments
+## Recompute the analyses
 
 ```sh
 python src/check_adaptive.py
@@ -45,35 +59,54 @@ python src/check_embedding_region.py
 python src/check_acquisition_baselines.py
 ```
 
-Run the minimax commands in the listed order: the first computes adaptive optima; `check_information.py` independently calls the solver to obtain every initial-action regret; the certificate command checks those regrets. Output JSON files go to `results/generated`, except conditioning, whose JSON is printed to stdout. The certificate command uses a generated regret file if present and otherwise the archived file. `check_learning.py` includes both the 30,000 training-pool simulation and the four-scale adaptive sweep. `check_product_exact.py` enumerates binomial–multinomial counts through sample size 32. These commands can take longer than the small examples; their values are already browsable in the archive.
+Run the minimax commands in this order: `check_adaptive.py` computes adaptive
+optima, `check_information.py` computes initial-action regrets and the minimax
+mixture, and `check_information_certificate.py` checks the certificate. JSON
+outputs go to `results/generated`; conditioning prints JSON to standard output.
+The certificate checker reads generated regrets when present and otherwise uses
+the archived file.
 
-The scripts are fixed paper experiments, with parameters visible in their source and indexed by `configs/paper.json`. That JSON documents the experiment contract; it does not silently override constants in the paper-check scripts. To explore other replay inputs without changing the paper experiments:
+`check_learning.py` evaluates 30,000 training pools and a four-scale adaptive
+sweep. `check_product_exact.py` enumerates binomial–multinomial probabilities
+through sample size 32. These calculations can take longer than the examples;
+the [result archive](results/README.md) provides their outputs for browsing.
+
+Parameters are defined in each analysis script and indexed by
+`configs/paper.json`. That manifest documents the numerical contract. To use
+other explicit replay and evidence inputs:
 
 ```sh
 python scripts/demo.py --replay examples/replay.json --evidence examples/evidence.json
 ```
 
-## Reading the implementation
+## Implementation and input contracts
 
 | Module | Responsibility |
 |---|---|
-| [replay.py](src/replay.py) | Whole-matrix rejection, exact empirical slot-product comparator, role-order replay, startup/variable charges |
-| [exact_state.py](src/exact_state.py) | Sorted accesses, exact completions, deterministic representatives, safe discards and answer certificate |
-| [check_adaptive.py](src/check_adaptive.py) | Rational Bayesian Bellman search and policy replay on each supported matrix |
-| [check_information.py](src/check_information.py) | Enumerate initial-action regrets and solve the two-world minimax mixture |
+| [replay.py](src/replay.py) | Whole-matrix rejection, empirical slot-product comparator, role ordering and startup/variable charges |
+| [exact_state.py](src/exact_state.py) | Sorted access, exact completion, representatives, safe discards and answer certificate |
+| [check_adaptive.py](src/check_adaptive.py) | Rational Bayesian Bellman search and policy replay |
+| [check_information.py](src/check_information.py) | Initial-action regrets and two-world minimax mixture |
 | [check_information_certificate.py](src/check_information_certificate.py) | Dual lower bound and feasible stagewise upper bound |
-| [check_learning.py](src/check_learning.py) | Shared training pools, stagewise learning comparison, startup sweep and acceptance laws |
-| [check_product_exact.py](src/check_product_exact.py) | Exact product-estimator wrong-order probabilities |
+| [check_learning.py](src/check_learning.py) | Training pools, stagewise learning, startup sweep and acceptance laws |
+| [check_product_exact.py](src/check_product_exact.py) | Exact product-estimator error probabilities |
 | [check_conditioning.py](src/check_conditioning.py) | Conditional grid, clipping contrast, slot shuffles and acquisition accounting |
 | [check_acquisition.py](src/check_acquisition.py) | Finite-horizon sample-size choice |
-| [check_protocol.py](src/check_protocol.py) | Random and directed checks of the exact state machine |
+| [check_protocol.py](src/check_protocol.py) | Random and directed state-machine checks |
 
-The implementation is a finite reference model. Its score inputs and exact streams are supplied explicitly; no DBMS connector, scorer inference or hardware latency measurement is required. The empirical product comparator enumerates at most one million matrices and is intended for small pools. The adaptive solver is specialized to the four-entity binary instance. These scopes correspond to the distinct mechanisms evaluated in the paper.
+Score matrices and exact streams are explicit inputs. The empirical product
+comparator accepts up to one million Cartesian combinations; the adaptive solver
+operates on the four-entity binary instance.
 
-See [source and dependency notes](SOURCES.md). No data download, service credential or network access is needed.
+[embedding.json](examples/embedding.json) gives the five-entity, three-role
+initialization. [check_embedding_region.py](src/check_embedding_region.py) reaches
+it through scans/completions, checks 256 binary worlds and 256 observation masks,
+and calculates initial-action gaps with a ternary-state dynamic program. The
+continuous price region uses the paper's policy-count bound and exact box
+arithmetic.
 
-## Reachability, price stability and acquisition baselines
-
-[embedding.json](examples/embedding.json) specifies the five-entity, three-role initialization. [check_embedding_region.py](src/check_embedding_region.py) constructs it through actual scans/completions, checks all 256 binary worlds and 256 observation masks, and uses a separate ternary-state DP to calculate all initial-action gaps. The continuous price region follows the policy-count bound in the paper; the script checks its gap and box arithmetic, rather than sampling prices and extrapolating.
-
-[check_acquisition_baselines.py](src/check_acquisition_baselines.py) computes 25 baseline/acquisition/horizon combinations and exact break-even horizons. It preserves the difference between changing the future no-sample policy while holding acquisition fixed and changing the policy that produces audits. [Archived results](results/archive/acquisition-baselines.json) contain every candidate gain, not just the selected size.
+[check_acquisition_baselines.py](src/check_acquisition_baselines.py) computes
+25 baseline/acquisition/horizon combinations and exact break-even horizons. It
+separates the future no-sample policy from the policy producing audits.
+[Acquisition results](results/archive/acquisition-baselines.json) retain every
+candidate gain.
